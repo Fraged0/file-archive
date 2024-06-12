@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>file archive</title>
+  </head>
+  <body>
+    <h1>file archive</h1>
+    <h3>SEC1</h3>
+    <hr>
+    <p>this section contains old software (note that some are downloaded off other websites)</p>
+    <hr>
+    <div id="content"></div>
+  </body>
+  <script>
+    fetch('https://fraged0.github.io/file-archive/data.json')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach((item) => {
+        const h2 = document.createElement('h2');
+        h2.textContent = item[0];
+        const p = document.createElement('p');
+        p.textContent = item[1];
+        const a = document.createElement('a');
+        a.href = item[2];
+        a.textContent = 'Download';
+        const hr = document.createElement('hr');
+        const parent = document.getElementById('content');
+        parent.appendChild(h2);
+        parent.appendChild(p);
+        parent.appendChild(a);
+        parent.appendChild(hr);
+        });
+    });
+  </script>
+</html>
